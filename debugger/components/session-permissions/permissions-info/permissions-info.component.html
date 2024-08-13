@@ -1,0 +1,96 @@
+@if(container.support_session_permissions_info; as data){
+
+<div
+  role="list"
+  class="divide-y divide-gray-100 w-full maxvh-50 overflow-y-auto"
+>
+  @if(data){ 
+    @for (key of data|keys; track key) {
+      @if(['granted'].includes(data[key].state)){ @if(!['typename'].includes(key)){<ng-container [ngTemplateOutlet]="PermissionViewTemplate" [ngTemplateOutletContext]="{data,key}"></ng-container>} } 
+    } 
+    @for (key of data|keys; track key) {
+      @if(['prompt'].includes(data[key].state)){ @if(!['typename'].includes(key)){<ng-container [ngTemplateOutlet]="PermissionViewTemplate" [ngTemplateOutletContext]="{data,key}"></ng-container>} } 
+    } 
+    @for (key of data|keys; track key) {
+      @if(['denied'].includes(data[key].state)){ @if(!['typename'].includes(key)){<ng-container [ngTemplateOutlet]="PermissionViewTemplate" [ngTemplateOutletContext]="{data,key}"></ng-container>} } 
+    } 
+  }
+</div>
+
+}
+
+<ng-template #PermissionViewTemplate let-data="data" let-key="key">
+  <div
+    class="relative flex justify-between gap-x-6 px-4 py-2 hover:bg-gray-50 sm:px-6 lg:px-8"
+  >
+    <div class="items-center flex min-w-0 gap-x-4">
+      <mat-icon svgIcon="layers"></mat-icon>
+      <div class="flex-auto">
+        <div class="flex items-baseline justify-between gap-x-4">
+          <p class="text-sm font-semibold leading-6 text-gray-900 space-x-2">
+            <span>{{ key | removeUnderScore }}</span>
+            <span
+              class="inline-flex items-center gap-x-1.5 rounded-full px-2 text-xs font-medium"
+              [ngClass]="{
+                'bg-green-100 text-green-600': ['granted'].includes(
+                  data[key].state
+                ),
+                'bg-red-100 text-red-600': ['denied'].includes(data[key].state),
+                'bg-yellow-100 text-yellow-600': ['prompt'].includes(
+                  data[key].state
+                )
+              }"
+            >
+              @switch(data[key].state){ @case('granted'){<mat-icon
+                class="icon-size-3"
+                svgIcon="check"
+              ></mat-icon
+              >} @case('denied'){<mat-icon
+                class="icon-size-3"
+                svgIcon="close"
+              ></mat-icon
+              >} @case('prompt'){<mat-icon
+                class="icon-size-3"
+                svgIcon="bolt"
+              ></mat-icon
+              >} }
+              {{ data[key].state }}
+            </span>
+          </p>
+        </div>
+        <span class="mt-1 line-clamp-2 text-sm leading-none text-gray-600">
+          {{ data[key].description }}
+        </span>
+        @if(data[key].error_message; as error_message){
+        <div
+          class="mt-1 line-clamp-2 text-sm leading-6 text-gray-600 bg-red-200 p-1 rounded-lg"
+        >
+          {{ error_message }}
+        </div>
+        }
+      </div>
+    </div>
+    <div class="flex shrink-0 items-center gap-x-4">
+      <div class="flex-auto">
+        <span
+          class="inline-flex items-center gap-x-1.5 rounded-full px-2 text-xs font-medium"
+          [ngClass]="{
+            'bg-green-100 text-green-700': data[key].supported,
+            'bg-red-100 text-red-700': !data[key].supported
+          }"
+        >
+          <svg
+            class="h-1.5 w-1.5 {{
+              data[key].supported ? 'fill-green-500' : 'fill-red-500'
+            }}"
+            viewBox="0 0 6 6"
+            aria-hidden="true"
+          >
+            <circle cx="3" cy="3" r="3" />
+          </svg>
+          {{ data[key].supported ? 'Supported' : 'Not Supported' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</ng-template>
