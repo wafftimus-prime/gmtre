@@ -1,0 +1,244 @@
+@switch (authLayout) {
+  @case('classic'){ <ng-container *ngTemplateOutlet="TemplateClassic"></ng-container> }
+  @case ('split_screen') { <ng-container *ngTemplateOutlet="TemplateSplitScreen"></ng-container> }
+  <!--
+  @case ('modern') { <h1>Showing modern</h1> }
+  @case ('modern_reversed') { <h1>Showing modern_reversed</h1> }
+  @case ('split_screen_reversed') { <h1>Showing split_screen_reversed</h1> }
+  @case ('fullscreen') { <h1>Showing fullscreen</h1> }
+  @case ('fullscreen_reversed') { <h1>Showing fullscreen_reversed</h1> }
+  -->
+}
+
+<ng-template #TemplateClassic>
+  <div class="flex min-w-0 flex-auto flex-col items-center sm:justify-center">
+    <div
+      class="w-full px-4 py-8 sm:bg-card sm:w-auto sm:rounded-2xl sm:p-12 sm:shadow"
+    >
+      <div class="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
+        <ng-container *ngTemplateOutlet="TemplateStepHeader"></ng-container>
+
+        <ng-container *ngTemplateOutlet="TemplateStepForm"></ng-container>
+
+        <!-- Form footer -->
+        <div class="text-secondary mt-8 text-md font-medium">
+          <span>Return to</span>
+          <a
+            class="ml-1 text-primary-500 hover:underline"
+            [routerLink]="['/auth/sign-in']"
+            >sign in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #TemplateSplitScreen>
+  <div
+    class="select-none flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0"
+  >
+    <div
+      class="md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card"
+    >
+      <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+        <ng-container *ngTemplateOutlet="TemplateStepHeader"></ng-container>
+
+        <!-- Alert -->
+        <gmtre-alert
+          class="mt-8"
+          *ngIf="showAlert"
+          [appearance]="'outline'"
+          [showIcon]="false"
+          [type]="alert.type"
+          [@shake]="alert.type === 'error'"
+        >
+          {{ alert.message }}
+        </gmtre-alert>
+
+        <ng-container *ngTemplateOutlet="TemplateStepForm"></ng-container>
+
+        <!-- Form footer -->
+        <div class="mt-8 text-md font-medium text-secondary">
+          <span>Return to</span>
+          <a
+            class="ml-1 text-primary-500 hover:underline"
+            [routerLink]="['/auth/sign-in']"
+            >sign in
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative hidden md:flex flex-auto items-center justify-center w-1/2 h-full p-16 lg:px-28 overflow-hidden bg-gray-800 dark:border-l"
+    >
+      <!-- Background - @formatter:off -->
+      <ng-container
+        *ngIf="
+          authConfig?.background?.image;
+          then ConfiguredBackground;
+          else DefaultBackground
+        "
+      ></ng-container>
+
+      <ng-template #ConfiguredBackground>
+        <div
+          class="w-full h-full absolute"
+          [style]="
+            'z-index: 1;background:' +
+            authConfig?.background?.color
+          "
+        ></div>
+        <div class="w-full h-full absolute">
+          <img
+            class="h-full cover_background"
+            [src]="authConfig?.background?.image"
+            alt=""
+          />
+        </div>
+      </ng-template>
+
+      <ng-template #DefaultBackground>
+        <!-- Rings -->
+        <svg
+          class="absolute inset-0 pointer-events-none"
+          viewBox="0 0 960 540"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMidYMax slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            class="text-gray-700 opacity-25"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="100"
+          >
+            <circle r="234" cx="196" cy="23"></circle>
+            <circle r="234" cx="790" cy="491"></circle>
+          </g>
+        </svg>
+        <!-- Dots -->
+        <svg
+          class="absolute -top-16 -right-16 text-gray-700"
+          viewBox="0 0 220 192"
+          width="220"
+          height="192"
+          fill="none"
+        >
+          <defs>
+            <pattern
+              id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect x="0" y="0" width="4" height="4" fill="currentColor"></rect>
+            </pattern>
+          </defs>
+          <rect
+            width="220"
+            height="192"
+            fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"
+          ></rect>
+        </svg>
+      </ng-template>
+      <!-- @formatter:on -->
+      <!-- Content -->
+      <div class="z-10 relative w-full max-w-2xl">
+        <div class="text-7xl font-bold leading-none text-gray-100">
+          <div>Welcome to</div>
+          <div>{{ authConfig?.title }}</div>
+        </div>
+        <div
+          class="mt-6 text-lg tracking-tight leading-6 text-white {{
+            authConfig?.slogan?.class
+          }}"
+        >
+          {{ authConfig?.slogan?.label }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #TemplateStepHeader>
+  <!-- Logo -->
+  <div class="w-24">
+    <img [src]="logo?.full" />
+  </div>
+
+  <!-- Title -->
+  <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">
+    Confirmation required
+  </div>
+  <div class="mt-4">
+    We've sent you a confirmation code to the email you provided.
+  </div>
+</ng-template>
+
+<ng-template #TemplateStepForm>
+  @if (confirmationForm ) {
+
+  <form
+    class="mt-8"
+    [formGroup]="confirmationForm"
+    #confirmationSignupNgForm="ngForm"
+  >
+    <!-- Email field -->
+    <mat-form-field class="w-full">
+      <mat-label>Email address</mat-label>
+      <input
+        autocomplete="on"
+        id="email"
+        matInput
+        [formControlName]="'email'"
+      />
+      <mat-error *ngIf="confirmationForm.get('email')?.hasError('required')">
+        Email address is required
+      </mat-error>
+      <mat-error *ngIf="confirmationForm.get('email')?.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Confirmation Code field -->
+    <mat-form-field class="w-full">
+      <mat-label>Confirmation Code</mat-label>
+      <input
+        autocomplete="on"
+        id="confirmationCode"
+        matInput
+        [formControlName]="'confirmationCode'"
+      />
+      <mat-error
+        *ngIf="confirmationForm?.get('confirmationCode')?.hasError('required')"
+      >
+        Confirmation code is required
+      </mat-error>
+    </mat-form-field>
+
+    @if(confirmationForm.valid){
+
+    <!-- Submit button -->
+    <button
+      class="gmtre-mat-button-large w-full mt-6"
+      mat-flat-button
+      [color]="'primary'"
+      [disabled]="confirmationForm.disabled"
+      (click)="confirmSignup()"
+    >
+      <span *ngIf="!confirmationForm.disabled"> Confirm Account </span>
+      <mat-progress-spinner
+        *ngIf="confirmationForm.disabled"
+        [diameter]="24"
+        [mode]="'indeterminate'"
+      ></mat-progress-spinner>
+    </button>
+    }
+  </form>
+
+  }
+</ng-template>
