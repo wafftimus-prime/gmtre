@@ -1,0 +1,100 @@
+/* Variables */
+:root {
+    --gmtre-vertical-navigation-thin-width: 60px;
+    // --gmtre-vertical-navigation-thin-width: 80px;
+}
+
+gmtre-vertical-navigation {
+
+    /* Thin appearance overrides */
+    &.gmtre-vertical-navigation-appearance-thin {
+        width: var(--gmtre-vertical-navigation-thin-width);
+        min-width: var(--gmtre-vertical-navigation-thin-width);
+        max-width: var(--gmtre-vertical-navigation-thin-width);
+
+        /* Left positioned */
+        &.gmtre-vertical-navigation-position-left {
+
+            &.gmtre-vertical-navigation-mode-side {
+                margin-left: calc(var(--gmtre-vertical-navigation-thin-width) * -1);
+            }
+
+            &.gmtre-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        /* Right positioned */
+        &.gmtre-vertical-navigation-position-right {
+
+            &.gmtre-vertical-navigation-mode-side {
+                margin-right: calc(var(--gmtre-vertical-navigation-thin-width) * -1);
+            }
+
+            &.gmtre-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            .gmtre-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: var(--gmtre-vertical-navigation-thin-width);
+            }
+        }
+
+        /* Wrapper */
+        .gmtre-vertical-navigation-wrapper {
+
+            /* Content */
+            .gmtre-vertical-navigation-content {
+
+                > gmtre-vertical-navigation-aside-item,
+                > gmtre-vertical-navigation-basic-item {
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 50px;
+                    min-height: 50px;
+                    max-height: 50px;
+                    padding: 0 10px;
+
+                    .gmtre-vertical-navigation-item-wrapper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .gmtre-vertical-navigation-item {
+                            justify-content: center;
+                            padding: 12px;
+                            border-radius: 4px;
+
+                            .gmtre-vertical-navigation-item-icon {
+                                margin: 0;
+                            }
+
+                            .gmtre-vertical-navigation-item-arrow,
+                            .gmtre-vertical-navigation-item-badge-content,
+                            .gmtre-vertical-navigation-item-title-wrapper {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                > gmtre-vertical-navigation-collapsable-item {
+                    display: none
+                }
+
+                > gmtre-vertical-navigation-group-item {
+
+                    > .gmtre-vertical-navigation-item-wrapper {
+                        display: none
+                    }
+                }
+            }
+        }
+
+        /* Aside wrapper */
+        .gmtre-vertical-navigation-aside-wrapper {
+            left: var(--gmtre-vertical-navigation-thin-width);
+        }
+    }
+}

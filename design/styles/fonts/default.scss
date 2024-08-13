@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Gmtre Thin';
+  src: url(/assets/fonts/NeueHassDisplayThin.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Thin Italic';
+  src: url(/assets/fonts/NeueHassDisplayThinItalic.ttf) format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Roman';
+  src: url(/assets/fonts/NeueHassDisplayRoman.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Roman Italic';
+  src: url(/assets/fonts/NeueHassDisplayRomanItalic.ttf) format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Medium';
+  src: url(/assets/fonts/NeueHassDisplayMedium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Medium Italic';
+  src: url(/assets/fonts/NeueHassDisplayMediumItalic.ttf) format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Bold';
+  src: url(/assets/fonts/NeueHassDisplayBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Bold Italic';
+  src: url(/assets/fonts/NeueHassDisplayBoldItalic.ttf) format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Black';
+  src: url(/assets/fonts/NeueHassDisplayBlack.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: 'Gmtre Black Italic';
+  src: url(/assets/fonts/NeueHassDisplayBlackItalic.ttf) format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap
+}
+
+.gmtre-thin { font-family: "Gmtre Thin"}
+.gmtre-thin-italic { font-family: "Gmtre Thin Italic"}
+.gmtre-roman { font-family: "Gmtre Roman"}
+.gmtre-roman-italic { font-family: "Gmtre Roman Italic"}
+.gmtre-medium { font-family: "Gmtre Medium"}
+.gmtre-medium-italic { font-family: "Gmtre Medium Italic"}
+.gmtre-bold { font-family: "Gmtre Bold"}
+.gmtre-bold-italic { font-family: "Gmtre Bold Italic"}
+.gmtre-black { font-family: "Gmtre Black"}
+.gmtre-black-italic { font-family: "Gmtre Black Italic"}

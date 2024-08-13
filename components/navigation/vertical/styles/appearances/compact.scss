@@ -1,0 +1,112 @@
+/* Variables */
+:root {
+    --gmtre-vertical-navigation-compact-width: 112px;
+}
+
+gmtre-vertical-navigation {
+
+    /* Compact appearance overrides */
+    &.gmtre-vertical-navigation-appearance-compact {
+        width: var(--gmtre-vertical-navigation-compact-width);
+        min-width: var(--gmtre-vertical-navigation-compact-width);
+        max-width: var(--gmtre-vertical-navigation-compact-width);
+
+        /* Left positioned */
+        &.gmtre-vertical-navigation-position-left {
+
+            /* Side mode */
+            &.gmtre-vertical-navigation-mode-side {
+                margin-left: calc(var(--gmtre-vertical-navigation-compact-width) * -1);
+            }
+
+            /* Opened */
+            &.gmtre-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        /* Right positioned */
+        &.gmtre-vertical-navigation-position-right {
+
+            /* Side mode */
+            &.gmtre-vertical-navigation-mode-side {
+                margin-right: calc(var(--gmtre-vertical-navigation-compact-width) * -1);
+            }
+
+            /* Opened */
+            &.gmtre-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            /* Aside wrapper */
+            .gmtre-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: var(--gmtre-vertical-navigation-compact-width);
+            }
+        }
+
+        /* Wrapper */
+        .gmtre-vertical-navigation-wrapper {
+
+            /* Content */
+            .gmtre-vertical-navigation-content {
+
+                > gmtre-vertical-navigation-aside-item,
+                > gmtre-vertical-navigation-basic-item {
+
+                    .gmtre-vertical-navigation-item-wrapper {
+                        margin: 4px 8px 0 8px;
+
+                        .gmtre-vertical-navigation-item {
+                            flex-direction: column;
+                            justify-content: center;
+                            padding: 12px;
+                            border-radius: 6px;
+
+                            .gmtre-vertical-navigation-item-icon {
+                                margin-right: 0;
+                            }
+
+                            .gmtre-vertical-navigation-item-title-wrapper {
+                                margin-top: 8px;
+
+                                .gmtre-vertical-navigation-item-title {
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    text-align: center;
+                                    line-height: 16px;
+                                }
+
+                                .gmtre-vertical-navigation-item-subtitle {
+                                    display: none !important;
+                                }
+                            }
+
+                            .gmtre-vertical-navigation-item-badge {
+                                position: absolute;
+                                top: 12px;
+                                left: 64px;
+                            }
+                        }
+                    }
+
+                    > gmtre-vertical-navigation-collapsable-item {
+                        display: none
+                    }
+
+                    > gmtre-vertical-navigation-group-item {
+
+                        > .gmtre-vertical-navigation-item-wrapper {
+                            display: none
+                        }
+                    }
+                }
+            }
+        }
+
+        /* Aside wrapper */
+        .gmtre-vertical-navigation-aside-wrapper {
+            left: var(--gmtre-vertical-navigation-compact-width);
+        }
+    }
+}

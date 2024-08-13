@@ -1,0 +1,115 @@
+:host {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  & > .gmtre-split-gutter {
+    border: none;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.gmtre-split-gutter-collapsed {
+      flex-basis: 1px !important;
+      pointer-events: none;
+    }
+
+    & > .gmtre-split-gutter-icon {
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  ::ng-deep > .gmtre-split-area {
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    /* When <gmtre-split-area [visible]="false"> force size to 0. */
+
+    &.gmtre-hidden {
+      flex: 0 1 0px !important;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .iframe-fix {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.gmtre-horizontal {
+    flex-direction: row;
+
+    & > .gmtre-split-gutter {
+      flex-direction: row;
+      cursor: col-resize;
+      height: 100%; // <- Fix safari bug about gutter height when direction is horizontal.
+
+      & > .gmtre-split-gutter-icon {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+      }
+    }
+
+    ::ng-deep > .gmtre-split-area {
+      height: 100%;
+    }
+  }
+
+  &.gmtre-vertical {
+    flex-direction: column;
+
+    & > .gmtre-split-gutter {
+      flex-direction: column;
+      cursor: row-resize;
+      width: 100%;
+
+      .gmtre-split-gutter-icon {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFCAMAAABl/6zIAAAABlBMVEUAAADMzMzIT8AyAAAAAXRSTlMAQObYZgAAABRJREFUeAFjYGRkwIMJSeMHlBkOABP7AEGzSuPKAAAAAElFTkSuQmCC');
+      }
+    }
+
+    ::ng-deep > .gmtre-split-area {
+      width: 100%;
+
+      &.gmtre-hidden {
+        max-width: 0;
+      }
+    }
+  }
+
+  /* When disabled remove gutters background image and specific cursor. */
+
+  &.gmtre-disabled {
+    & > .gmtre-split-gutter {
+      cursor: default;
+
+      .gmtre-split-gutter-icon {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+      }
+    }
+  }
+
+  /* Add transition only when transition enabled + split initialized + not currently dragging. */
+
+  &.gmtre-transition.gmtre-init:not(.gmtre-dragging) {
+    & > .gmtre-split-gutter,
+    ::ng-deep > .gmtre-split-area {
+      transition: flex-basis 0.3s;
+    }
+  }
+}

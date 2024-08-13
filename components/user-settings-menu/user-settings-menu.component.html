@@ -1,0 +1,33 @@
+<ion-content>
+
+
+  <ionic-vertical-menu
+  contentId="settings-main"
+  menuId="settings-main"
+  [menuItems]="userMenu"
+></ionic-vertical-menu>
+
+
+  <ion-list id="inbox-list">
+    <ion-menu-toggle auto-hide="false">
+      <!-- [routerLink]="[p.url]" -->
+      <ion-item
+        routerDirection="root"
+        [routerLink]="['/auth/sign-out']"
+        class="text-md"
+        lines="none"
+        detail="false"
+        routerLinkActive="selected"
+      >
+        <ion-icon
+          aria-hidden="true"
+          slot="start"
+          color="medium"
+          size="small"
+          name="log-out"
+        ></ion-icon>
+        <ion-label>Sign Out</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+</ion-content>

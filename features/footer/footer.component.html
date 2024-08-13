@@ -1,0 +1,35 @@
+@defer (when user) {
+<div class="flex flex-row justify-between items-center w-full">
+  <div class="space-x-2 flex flex-row items-center">
+    <img
+      class="w-6"
+      src="assets/logos/datahaven/datahaven_base_logo.webp"
+      alt="DataHave Logo"
+    />
+    <span class="font-medium text-secondary text-sm"
+      >DataHaven Software &copy; {{ currentYear }}</span
+    >
+  </div>
+
+  <div class="flex flex-row">
+    <div class="invisible">
+      <gmtre-countdown
+        #sessionTimer
+        *ngIf="timeCheck(session?.credentials?.expiration) as remTime"
+        (event)="countdownEvent($event)"
+        [config]="{ leftTime: remTime }"
+      ></gmtre-countdown>
+    </div>
+    @if(is_debugger_active){
+      <button
+        mat-icon-button
+        class="h-3"
+        matTooltip="Show System Debugger"
+        (click)="showDebuggerView()"
+      >
+        <mat-icon class="icon-size-4" svgIcon="live_help"></mat-icon>
+      </button>
+    }
+  </div>
+</div>
+}

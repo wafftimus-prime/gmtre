@@ -1,0 +1,127 @@
+<!-- Loading bar -->
+<gmtre-loading-bar></gmtre-loading-bar>
+
+<!-- Navigation -->
+<ng-container *ngIf="isScreenSmall">
+  <gmtre-vertical-navigation
+    [ngClass]="{
+      'dark bg-gray-900': isDark,
+      'bg-card': !isDark
+    }"
+    class="print:hidden"
+    [mode]="'over'"
+    [name]="'mainNavigation'"
+    [navigation]="navigation.default"
+    [opened]="false"
+  >
+    <!-- Navigation header hook -->
+    <ng-container gmtreVerticalNavigationContentHeader>
+      <!-- Logo -->
+      <div
+        class="cursor-pointer flex items-center h-20 pt-6 px-8"
+        routerLink="/"
+      >
+        <img class="w-24" [src]="logo?.full" alt="Logo image" />
+      </div>
+    </ng-container>
+  </gmtre-vertical-navigation>
+</ng-container>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+  <!-- Header -->
+  <div
+    class="relative flex flex-0 items-center w-full h-14 sm:h-14 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden"
+  >
+    <ng-container *ngIf="!isScreenSmall">
+      <!-- Logo -->
+      <div class="cursor-pointer flex items-center mx-2 lg:mr-8" routerLink="/">
+        <div class="hidden lg:flex">
+          <img class="dark:hidden w-24" [src]="logo?.full" />
+          <img class="hidden dark:flex w-24" [src]="logo?.full" />
+        </div>
+        <img class="flex lg:hidden w-8" [src]="logo?.full" />
+      </div>
+      <!-- Horizontal navigation -->
+      <gmtre-horizontal-navigation
+        class="mr-2"
+        [name]="'mainNavigation'"
+        [navigation]="navigation?.horizontal"
+      ></gmtre-horizontal-navigation>
+    </ng-container>
+    <!-- Navigation toggle button -->
+    <ng-container *ngIf="isScreenSmall">
+      <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
+        <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
+      </button>
+    </ng-container>
+    <!-- Components -->
+    <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
+      <!-- <languages></languages> -->
+
+      <!-- Full Screen Feature -->
+      @if (activeApp?.theme?.features?.fullscreen) {
+      <gmtre-fullscreen class="hidden md:block"></gmtre-fullscreen>
+      }
+
+      <!-- Searchbar Feature -->
+      @if (activeApp?.theme?.features?.searchbar) {
+      <search [appearance]="'bar'"></search>
+      }
+
+      <!-- Apps Feature -->
+      @if (activeApp?.theme?.features?.apps) {
+      <apps></apps>
+      }
+
+      <!-- <shortcuts></shortcuts> -->
+
+      <!-- Messages Feature -->
+      @if (activeApp?.theme?.features?.messages) {
+      <messages></messages>
+      }
+
+      <!-- Notifications Feature -->
+      @if (activeApp?.theme?.features?.notifications) {
+      <notifications></notifications>
+      }
+
+      <!-- Quick Chat Feature -->
+      <ng-container *ngIf="activeApp?.theme?.features?.quickchat">
+        <button class="lg:hidden" mat-icon-button (click)="quickChat.toggle()">
+          <mat-icon
+            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
+          ></mat-icon>
+        </button>
+      </ng-container>
+
+      <!-- User Feature -->
+      @if (activeApp?.theme?.features?.user) {
+      <user></user>
+      }
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col flex-auto w-full">
+    <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+    <router-outlet *ngIf="true"></router-outlet>
+  </div>
+
+  <!-- Footer -->
+  @if (activeApp?.theme?.features?.footer) {
+  <div
+    class="relative flex flex-0 items-center w-full h-10 sm:h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden"
+  >
+    <span class="font-medium text-secondary"
+      >DataHaven Software &copy; {{ currentYear }}</span
+    >
+  </div>
+  }
+</div>
+
+<!-- Quick chat -->
+<ng-container *ngIf="activeApp?.theme?.features?.quickchat">
+  <quick-chat #quickChat="quickChat"></quick-chat>
+</ng-container>

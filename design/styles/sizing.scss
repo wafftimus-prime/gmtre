@@ -1,0 +1,256 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Brisk's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+$pctSymbol: '%';
+@for $pct from 0 through 100 {
+  .radius-#{$pct} {
+    --border-radius: #{$pct}#{$pctSymbol} !important;
+  }
+}
+
+$maxPrct: 100;
+@for $prct from 0 through $maxPrct {
+
+  ion-modal.minw-pct-#{$prct} {
+    --min-width: calc(#{$prct} * 1%) !important;
+  }
+  
+  ion-modal.minh-pct-#{$prct} {
+    --min-height: calc(#{$prct} * 1%) !important;
+  }
+
+  ion-modal.maxh-pct-#{$prct} {
+    --max-height: calc(#{$prct} * 1%) !important;
+  }
+  
+  ion-modal.maxw-pct-#{$prct} {
+    --max-width: calc(#{$prct} * 1%) !important;
+  }
+
+  ion-modal.w-pct-#{$prct} {
+    --width: calc(#{$prct} * 1%) !important;
+  }
+  ion-modal.h-pct-#{$prct} {
+    // --width: fit-content;
+    // --min-width: 250px;
+    --height: calc(#{$prct} * 1%) !important;
+    // --height: fit-content;
+    // --border-radius: 6px;
+    // --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  }
+  
+
+  .maxvh-#{$prct} {
+    max-height: #{$prct}vh !important;
+  }
+  
+  .maxvw-#{$prct} {
+    max-width: #{$prct}vw !important;
+  }
+
+  .minvh-#{$prct} {
+    min-height: #{$prct}vh !important;
+  }
+  
+  .minvw-#{$prct} {
+    min-width: #{$prct}vw !important;
+  }
+
+  .mh-#{$prct} {
+    max-height: calc(#{$prct} * 1%) !important;
+  }
+
+  .minh-#{$prct} {
+    min-height: calc(#{$prct} * 1%) !important;
+  }
+
+  .lh-#{$prct} {
+    line-height: calc(#{$prct} / 100 * 1) !important;
+  }
+}
+
+$maxPx: 1000;
+@for $pct from 0 through $maxPx {
+  .fsize-#{$pct} {
+    font-size: #{$pct}px !important;
+  }
+}
+
+$maxPx: 1000;
+@for $pct from 0 through $maxPx {
+  ion-icon.fsize-#{$pct} {
+    font-size: #{$pct}px !important;
+  }
+
+  .xl#{$pct} {
+    transform: translateX(calc(#{$pct}px * -1)) !important;
+  }
+
+  .xr#{$pct} {
+    transform: translateX(#{$pct}) !important;
+  }
+
+  .yu#{$pct} {
+    transform: translateY(calc(#{$pct}px * -1)) !important;
+  }
+
+  .yd#{$pct} {
+    transform: translateY(#{$pct}px) !important;
+  }
+
+  .fhm-#{$pct}px {
+    height: calc(100vh - #{$pct}px) !important;
+  }
+  .fwm-#{$pct}px {
+    width: calc(100vw - #{$pct}px) !important;
+  }
+
+  // .w-#{$pct} {
+  // width: calc(#{$pct} * 1%) !important;
+  // }
+
+  // .h-#{$pct} {
+  // height: calc(#{$pct} * 1%) !important;
+  // }
+
+  .mhpx-#{$pct} {
+    max-height: #{$pct}px !important;
+  }
+
+  .minhpx-#{$pct} {
+    min-height: #{$pct}px !important;
+  }
+
+  .mwpx-#{$pct} {
+    max-width: #{$pct}px !important;
+  }
+
+  .minwpx-#{$pct} {
+    min-width: #{$pct}px !important;
+  }
+
+  .fpx-#{$pct} {
+    width: #{$pct}px !important;
+    height: #{$pct}px !important;
+  }
+
+  .wpx-#{$pct} {
+    width: #{$pct}px !important;
+  }
+  .hpx-#{$pct} {
+    height: #{$pct}px !important;
+  }
+  .xpx-#{$pct} {
+    left: #{$pct}px !important;
+  }
+  .yupx-#{$pct} {
+    top: -#{$pct}px !important;
+  }
+  .ydpx-#{$pct} {
+    top: #{$pct}px !important;
+  }
+  .fs-#{$pct} {
+    font-size: #{$pct}px !important;
+  }
+  .fw-#{$pct} {
+    font-weight: #{$pct} !important;
+  }
+
+  .mb#{$pct} {
+    margin-bottom: #{$pct}px !important;
+  }
+
+  .mt#{$pct} {
+    margin-top: #{$pct}px !important;
+  }
+
+  .ml#{$pct} {
+    margin-left: #{$pct}px !important;
+  }
+
+  .mr#{$pct} {
+    margin-right: #{$pct}px !important;
+  }
+
+  .mx#{$pct} {
+    margin-right: #{$pct}px !important;
+    margin-left: #{$pct}px !important;
+  }
+
+  .my#{$pct} {
+    margin-bottom: #{$pct}px !important;
+    margin-top: #{$pct}px !important;
+  }
+
+  .m#{$pct} {
+    margin-bottom: #{$pct}px !important;
+    margin-top: #{$pct}px !important;
+  }
+
+  //
+  .pb#{$pct} {
+    padding-bottom: #{$pct}px !important;
+  }
+
+  .pt#{$pct} {
+    padding-top: #{$pct}px !important;
+  }
+
+  .pl#{$pct} {
+    padding-left: #{$pct}px !important;
+  }
+
+  .pr#{$pct} {
+    padding-right: #{$pct}px !important;
+  }
+
+  .px#{$pct} {
+    padding-right: #{$pct}px !important;
+    padding-left: #{$pct}px !important;
+  }
+
+  .py#{$pct} {
+    padding-bottom: #{$pct}px !important;
+    padding-top: #{$pct}px !important;
+  }
+
+  .p#{$pct} {
+    padding-bottom: #{$pct}px !important;
+    padding-top: #{$pct}px !important;
+  }
+}
+
+.optimizeImage {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  --tw-ring-color: transparent; /* #2563eb; */
+}
+
+
+
+body {
+  overscroll-behavior-y: none !important;
+  overscroll-behavior-x: none !important;
+}

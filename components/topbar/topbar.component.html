@@ -1,0 +1,37 @@
+<ion-header style="box-shadow:none" [ngClass]="HeaderCss" [ngStyle]="HeaderStyles" [mode]="HeaderMode" [translucent]="IsTranslucent">
+  <ion-toolbar [color]="HeaderColor" >
+    <ng-content></ng-content>
+    <ion-title slot="start">
+      {{ HeaderTitle }}
+    </ion-title>
+
+    <img
+      slot="end"
+      class="ion-padding-end"
+      *ngIf="ShowLogo"
+      style="height: 20px"
+      routerLink="/"
+      [src]="LogoUrl"
+      alt="{{AppName}} Logo"
+    />
+
+    <ion-buttons *ngIf="ShowBackButton" slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ng-container *ngIf="HasLogRecords.asObservable()|async">
+
+      <ion-buttons *ngIf="ShowDebuggerButton" slot="secondary">
+        <ion-button (click)="showSystemLog()">
+          <ion-icon slot="icon-only" name="bug"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+
+    <ion-buttons *ngIf="ShowMenuButton" slot="secondary">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

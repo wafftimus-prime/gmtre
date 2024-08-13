@@ -1,0 +1,94 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+// Use Angular Material's theming system
+@use '@angular/material' as mat;
+
+// Define your custom theme
+@include mat.core();
+
+// Create the theme
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$blue-palette,
+    ),
+  )
+);
+
+// Ensure the theme mixin is wrapped in a selector
+html {
+  @include mat.all-component-themes($theme);
+}
+
+// @include angular-material-theme($theme);
+
+// $theme: mat.define-theme((
+//     color: (
+//       theme-type: dark,
+//       primary: mat.$violet-palette,
+//     ),
+//     typography: (
+//       brand-family: 'Comic Sans',
+//       bold-weight: 900
+//     ),
+//     density: (
+//       scale: -1
+//     )
+//   ));
+// Define your primary, accent, and warn colors
+//  $primary: mat-palette($mat-indigo);
+//  $accent: mat-palette($mat-pink, A200, A100, A400);
+//  $warn: mat-palette($mat-red);
+// Create the theme
+//  $theme: mat-light-theme(
+//    (
+//      color: (
+//        primary: $primary,
+//        accent: $accent,
+//        warn: $warn,
+//      ),
+//    )
+//  );
+
+// Include the theme in the styles
+
+/* Core CSS required for Ionic components to work properly */
+@import '@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
+
+// @import "leaflet/dist/leaflet.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* 
+ @import "@ionic/angular/css/palettes/dark.always.css"; 
+ @import "@ionic/angular/css/palettes/dark.class.css"; 
+@import '@ionic/angular/css/palettes/dark.system.css';
+*/

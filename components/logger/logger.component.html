@@ -1,0 +1,67 @@
+<ion-header mode="ios" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon ios="close" mode="ios"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start"> System Logger </ion-title>
+
+    <img
+      slot="end"
+      class="ion-padding-end"
+      style="height: 20px"
+      routerLink="/"
+      [src]="LogoUrl"
+      alt="Noble Logo"
+    />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [fullscreen]="true" mode="ios">
+  <ng-container *ngIf="logger | async as logData">
+    <ion-item *ngIf="logData?.user as user" lines="none">
+      <ion-label>
+        <ng-container *ngIf="!loaded">
+          <ion-skeleton-text *ngIf="!loaded" [animated]="true" style="width: 60%"></ion-skeleton-text>
+          <ion-skeleton-text *ngIf="!loaded" [animated]="true" style="width: 90%"></ion-skeleton-text>
+          <ion-skeleton-text *ngIf="!loaded" [animated]="true" style="width: 70%"></ion-skeleton-text>
+        </ng-container>
+        <ng-container *ngIf="loaded">
+          <h3>
+            <b>User:</b> {{ user?.name }}
+            <ion-icon
+              [color]="user?.email_verified ? 'success' : 'danger'"
+              [name]="user?.email_verified ? 'checkmark-circle' : 'close-circle'"
+            ></ion-icon>
+          </h3>
+          <p>UID: {{ user?.sub }}</p>
+          <p>Email: {{ user?.email }}</p>
+        </ng-container>
+      </ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ng-container *ngFor="let log of logData?.logs">
+        <ion-item>
+          <ion-label>
+            <h3>{{ log?.title }}</h3>
+            <p>{{ log?.timestamp | date : "M/d/yy, h:mm a" }}</p>
+            <p class="fs-10">
+              <ion-text color="dark">Location: {{ log?.location }}</ion-text>
+            </p>
+            <details>
+              <summary class="fs-10">View Message</summary>
+              <pre class="fs-10">{{ log?.message }}</pre>
+            </details>
+            <details>
+              <summary class="fs-10">View Stack</summary>
+              <pre class="fs-10">{{ log?.stack }}</pre>
+            </details>
+          </ion-label>
+        </ion-item>
+        <!-- <div class="ion-padding" slot="content">{{ log | json }}</div> -->
+      </ng-container>
+    </ion-list>
+  </ng-container>
+</ion-content>

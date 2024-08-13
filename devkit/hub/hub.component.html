@@ -1,0 +1,139 @@
+<div
+  class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+  cdkScrollable
+>
+  <!-- Header -->
+  <div class="relative flex-0 overflow-hidden bg-gray-800 dark">
+    <!-- Background - @formatter:off -->
+    <!-- Rings -->
+    <!-- <img class="hub_image" src="assets/media/flcities_home.png" alt=""> -->
+    <!-- <div class="image_overlay"></div> -->
+
+    <div class="overflow-hidden bg-white shadow">
+      <h2 class="sr-only" id="profile-overview-title">Profile Overview</h2>
+      <div class="bg-white p-6">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <div class="items-center sm:flex sm:space-x-5">
+            <div class="flex-shrink-0">
+              <img
+                class="mx-auto h-20 w-20 rounded-full"
+                [src]="authConfig?.general?.desktop_logo_light"
+                alt="Customer Logo"
+              />
+            </div>
+            <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
+              <p class="text-xl font-bold text-gray-900 sm:text-2xl">
+                {{ metadata?.customer_name }}
+              </p>
+              <p class="text-sm font-medium text-gray-600">
+                {{ metadata?.app_name }}
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 flex justify-center sm:mt-0">
+            <a
+              href="#"
+              class="flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              >View profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="flex flex-auto p-6 sm:p-10">
+    <div class="flex flex-col flex-auto w-full max-w-xs sm:max-w-5xl mx-auto">
+      <!-- Applications -->
+      <ng-container *ngIf="apps?.length; else noApps">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 sm:mt-10"
+        >
+          <ng-container
+            *ngFor="let app of apps; trackBy: trackByFn"
+          >
+            <!-- Course -->
+            <div
+              class="flex flex-col h-auto shadow rounded-2xl overflow-hidden bg-card"
+              [ngClass]="{ 'bg-gray-100 cursor-not-allowed': app?.disabled }"
+            >
+              <div class="flex flex-col px-4 select-none">
+                <div class="flex mt-2 flex-row items-center justify-between">
+                  <mat-icon
+                    class="ml-1.5 icon-size-8"
+                    [svgIcon]="app?.app_icon?.name"
+                  ></mat-icon>
+
+                  @if (!app?.disabled) {
+                  <mat-icon
+                    [routerLink]="app?.base_path"
+                    matTooltip="Open {{ app?.app_name }}"
+                    class="cursor-pointer icon-size-5"
+                    svgIcon="open_in_new"
+                  ></mat-icon>
+                  }
+                </div>
+                <!-- Course title & description -->
+                <div class="mt-2 text-lg font-medium">{{ app.app_name }}</div>
+                <div
+                  class="mt-0.5 text-secondary text-xs select-none"
+                  [matTooltip]="app?.disabled ? null : app?.description"
+                >
+                  {{ app?.description | truncate : 100 : '...' }}
+                </div>
+                <div class="w-12 h-1 my-2 border-t-2"></div>
+                <!-- Course time -->
+                <ng-container *ngFor="let link of app.quicklinks">
+                  @if (app?.disabled) {
+                  <div
+                    class="flex items-center leading-6 text-md text-secondary"
+                  >
+                    <mat-icon
+                      class="icon-size-5 text-hint"
+                      svgIcon="chevron_right"
+                    ></mat-icon>
+                    <div class="ml-1.5">{{ link.label }}</div>
+                  </div>
+                  } @else {
+                  <div
+                    [routerLink]="link.path"
+                    class="flex items-center leading-6 text-md text-secondary cursor-pointer"
+                  >
+                    <mat-icon
+                      class="icon-size-5 text-hint"
+                      svgIcon="chevron_right"
+                    ></mat-icon>
+                    <div class="ml-1.5">{{ link.label }}</div>
+                  </div>
+                  }
+                </ng-container>
+              </div>
+              <!-- Course completion -->
+              <div
+                class="flex items-center mt-2 leading-5 text-md text-secondary"
+              ></div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <!-- No apps -->
+      <ng-template #noApps>
+        <div
+          class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent"
+        >
+          <mat-icon
+            class="icon-size-24"
+            [svgIcon]="'heroicons_outline:document-search'"
+          ></mat-icon>
+          <div
+            class="mt-6 text-2xl font-semibold tracking-tight text-secondary"
+          >
+            No courses found!
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
