@@ -1,0 +1,39 @@
+@if(container.metadata; as data){
+<div class="border max-w-sm bg-white rounded-lg shadow-md px-6 pb-4">
+    <div class="flex justify-center items-center">
+      <h4 class="text-lg font-bold">Platform Configuration</h4>
+    </div>
+    <div class="flex justify-center">
+      <img
+        class="w-24 h-24 rounded-xl border p-2"
+        [src]="container.logo?.full"
+        alt="{{ data.app_name }}"
+      />
+    </div>
+    <div class="text-center mt-4">
+      <h2 class="text-xl font-semibold">{{ data.app_name }}</h2>
+    </div>
+
+    <div class="mt-2 border-t pt-4">
+      <div class="flex justify-between items-center">
+        <h4 class="text-sm font-medium">Details</h4>
+        <button class="text-xs text-blue-500" (click)="container.downloadData()">
+          Download
+        </button>
+      </div>
+      <div class="mt-2">
+        @for (attr of data|keys; track attr) {
+          
+          <div class="text-sm flex flex-row justify-between">
+              <span class="font-medium mr-4">
+                  {{attr | removeUnderScore | titlecase}}
+              </span>
+              <span matTooltip="{{ data[attr] }}">
+                  {{data[attr] | truncate : 40 : '...'}}
+              </span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
