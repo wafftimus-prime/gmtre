@@ -12,15 +12,13 @@
     [mode]="'over'"
     [name]="'mainNavigation'"
     [navigation]="navigation.default"
-    [opened]="false"
-  >
+    [opened]="false">
     <!-- Navigation header hook -->
     <ng-container gmtreVerticalNavigationContentHeader>
       <!-- Logo -->
       <div
         class="cursor-pointer flex items-center h-20 pt-6 px-8"
-        routerLink="/"
-      >
+        routerLink="/">
         <img class="w-24" [src]="logo?.full" alt="Logo image" />
       </div>
     </ng-container>
@@ -31,8 +29,7 @@
 <div class="flex flex-col flex-auto w-full min-w-0">
   <!-- Header -->
   <div
-    class="relative flex flex-0 items-center w-full h-14 sm:h-14 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden"
-  >
+    class="relative flex flex-0 items-center w-full h-14 sm:h-14 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
     <ng-container *ngIf="!isScreenSmall">
       <!-- Logo -->
       <div class="cursor-pointer flex items-center mx-2 lg:mr-8" routerLink="/">
@@ -46,8 +43,7 @@
       <gmtre-horizontal-navigation
         class="mr-2"
         [name]="'mainNavigation'"
-        [navigation]="navigation?.horizontal"
-      ></gmtre-horizontal-navigation>
+        [navigation]="navigation?.horizontal"></gmtre-horizontal-navigation>
     </ng-container>
     <!-- Navigation toggle button -->
     <ng-container *ngIf="isScreenSmall">
@@ -90,8 +86,7 @@
       <ng-container *ngIf="activeApp?.theme?.features?.quickchat">
         <button class="lg:hidden" mat-icon-button (click)="quickChat.toggle()">
           <mat-icon
-            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
-          ></mat-icon>
+            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
         </button>
       </ng-container>
 
@@ -112,11 +107,9 @@
   <!-- Footer -->
   @if (activeApp?.theme?.features?.footer) {
   <div
-    class="relative flex flex-0 items-center w-full h-10 sm:h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden"
-  >
-    <span class="font-medium text-secondary"
-      >DataHaven Software &copy; {{ currentYear }}</span
-    >
+    class="relative flex flex-0 items-center w-full h-10 sm:h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
+    <span class="font-medium text-secondary">Giusseppe Theodoredis &copy; {{
+      currentYear }}</span>
   </div>
   }
 </div>

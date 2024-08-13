@@ -3,7 +3,7 @@
 
 <!-- Navigation -->
 <gmtre-vertical-navigation
-[ngClass]="{
+  [ngClass]="{
   'dark bg-gray-900': isDark,
   'bg-card': !isDark
 }"
@@ -11,8 +11,7 @@
   [mode]="isScreenSmall ? 'over' : 'side'"
   [name]="'mainNavigation'"
   [navigation]="navigation.default"
-  [opened]="!isScreenSmall"
->
+  [opened]="!isScreenSmall">
   <!-- Navigation header hook -->
   <ng-container gmtreVerticalNavigationContentHeader>
     <div class="flex items-center w-full p-4 pl-6">
@@ -40,23 +39,19 @@
           class="w-full h-full rounded-full"
           *ngIf="user?.picture"
           [src]="user?.picture"
-          alt="User avatar"
-        />
+          alt="User avatar" />
         <mat-icon
           class="icon-size-24"
           *ngIf="!user?.picture"
-          [svgIcon]="'heroicons_solid:user-circle'"
-        ></mat-icon>
+          [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
       </div>
       <div class="flex flex-col items-center justify-center w-full mt-6">
         <div
-          class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium"
-        >
+          class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium">
           {{ user?.name }}
         </div>
         <div
-          class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-secondary"
-        >
+          class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-secondary">
           {{ user?.email }}
         </div>
       </div>
@@ -65,8 +60,7 @@
   <!-- Navigation footer hook -->
   <ng-container gmtreVerticalNavigationContentFooter>
     <div
-      class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-12"
-    >
+      class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-12">
       <img class="max-w-36" [src]="logo?.full" />
     </div>
   </ng-container>
@@ -76,8 +70,7 @@
 <div class="flex flex-col flex-auto w-full min-w-0">
   <!-- Header -->
   <div
-    class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden"
-  >
+    class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
     <!-- Navigation toggle button -->
     <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
       <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
@@ -110,8 +103,7 @@
       <ng-container *ngIf="activeApp?.theme?.features?.quickchat">
         <button class="lg:hidden" mat-icon-button (click)="quickChat.toggle()">
           <mat-icon
-            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
-          ></mat-icon>
+            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
         </button>
       </ng-container>
     </div>
@@ -126,7 +118,7 @@
 
   <!-- Footer -->
   <!--<div class="relative flex flex-0 items-center justify-start w-full h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
-        <span class="font-medium text-secondary">DataHaven Software &copy; {{currentYear}}</span>
+        <span class="font-medium text-secondary">Giusseppe Theodoredis &copy; {{currentYear}}</span>
     </div>-->
 </div>
 

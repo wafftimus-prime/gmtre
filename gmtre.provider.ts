@@ -10,13 +10,13 @@ import {
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { GmtreProviderConfig } from '@datahaven-labs/gmtre-core';
+import { GmtreProviderConfig } from '@gmtre-core';
 import {
   GMTRE_MOCK_API_DEFAULT_DELAY,
   GMTRE_PLATFORM_CONFIG,
   GmtrePlatformConfigService,
   mockApiInterceptor,
-} from '@datahaven-labs/gmtre-devkit';
+} from '@gmtre-devkit';
 import { GMTRE_CONFIG } from './services/config/config.constants';
 import { GmtreConfirmationService } from './services/confirmation';
 import { GmtreLoadingService, gmtreLoadingInterceptor } from './services/loading';

@@ -9,8 +9,7 @@
   [mode]="isScreenSmall ? 'over' : 'side'"
   [name]="'mainNavigation'"
   [navigation]="navigation.default"
-  [opened]="!isScreenSmall"
->
+  [opened]="!isScreenSmall">
   <!-- Navigation header hook -->
   <ng-container gmtreVerticalNavigationContentHeader>
     <!-- Logo -->
@@ -24,8 +23,7 @@
 <div class="flex flex-col flex-auto w-full min-w-0">
   <!-- Header -->
   <div
-    class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden"
-  >
+    class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
     <div class="flex items-center pr-2 space-x-2">
       <!-- Navigation toggle button -->
       <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
@@ -35,8 +33,7 @@
       <button
         class="hidden md:inline-flex"
         mat-icon-button
-        (click)="toggleNavigationAppearance()"
-      >
+        (click)="toggleNavigationAppearance()">
         <mat-icon [svgIcon]="'heroicons_outline:arrows-right-left'"></mat-icon>
       </button>
     </div>
@@ -76,8 +73,7 @@
       <ng-container *ngIf="activeApp?.theme?.features?.quickchat">
         <button class="lg:hidden" mat-icon-button (click)="quickChat.toggle()">
           <mat-icon
-            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"
-          ></mat-icon>
+            [svgIcon]="'heroicons_outline:chat-bubble-left-right'"></mat-icon>
         </button>
       </ng-container>
 
@@ -103,7 +99,7 @@
     class="relative flex flex-0 items-center justify-start w-full h-10 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden"
   >
     <span class="font-medium text-secondary"
-      >DataHaven Software &copy; {{ currentYear }}</span
+      >Giusseppe Theodoredis &copy; {{ currentYear }}</span
     >
   </div> -->
   }
