@@ -74,7 +74,9 @@ export class GmtreHubComponent
   /**
    * On init
    */
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.authConfig)
+  }
 
   /**
    * On destroy
