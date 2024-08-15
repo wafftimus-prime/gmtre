@@ -1,4 +1,4 @@
-// export * from './hub';
+export * from './hub';
 export * from './platform';
 export * from './mock-api';
 export * from './uikit';
