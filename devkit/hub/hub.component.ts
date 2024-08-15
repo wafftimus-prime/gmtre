@@ -25,7 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { UiKitBaseClass } from '../uikit/base';
-import { PipesModule, GmtreFindByKeyPipe } from '@gmtre-pipes';
+import { GmtreFindByKeyPipe } from '@gmtre-pipes';
 
 @Component({
   selector: 'hub-main',
@@ -50,7 +50,6 @@ import { PipesModule, GmtreFindByKeyPipe } from '@gmtre-pipes';
     MatProgressBarModule,
     MatButtonModule,
     RouterLink,
-    PipesModule,
     GmtreFindByKeyPipe,
     PercentPipe,
     I18nPluralPipe,
@@ -58,8 +57,7 @@ import { PipesModule, GmtreFindByKeyPipe } from '@gmtre-pipes';
 })
 export class GmtreHubComponent
   extends UiKitBaseClass
-  implements OnInit, OnDestroy
-{
+  implements OnInit, OnDestroy {
   categories: any[] = [];
 
   /**
@@ -76,7 +74,7 @@ export class GmtreHubComponent
   /**
    * On init
    */
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   /**
    * On destroy
