@@ -17,7 +17,7 @@ export class StripeApiService {
 
   defaultProductId = 'prod_Lmtuh6vCImohMG';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
@@ -103,7 +103,7 @@ export class StripeApiService {
       );
   }
 
-  getCardLinkPlanPrice(PriceId: string) {
+  getProductPlanPrice(PriceId: string) {
     const resource = `prices/${PriceId}`;
     const requestUrl = `${this.apiURL}${resource}`;
     return this.http
@@ -120,9 +120,9 @@ export class StripeApiService {
       );
   }
 
-  // getCardLinkCustomerPortalUrl(){
+  // getProductCustomerPortalUrl(){
   // }
-  getCardLinkCheckoutUrl(params: IStripeCheckOutRequest) {
+  getProductCheckoutUrl(params: IStripeCheckOutRequest) {
     const resource = `checkout/sessions?`;
     let urlParams = `customer=${params?.CustomerId}`;
     urlParams += `&mode=${params.Mode}`;
@@ -154,7 +154,7 @@ export class StripeApiService {
       );
   }
 
-  getCardLinkProduct(latest: boolean) {
+  getProducts(latest: boolean) {
     const resource = 'products?';
     const urlParams = `active=${latest}`;
     const requestUrl = `${this.apiURL}${resource}${urlParams}`;
@@ -172,7 +172,7 @@ export class StripeApiService {
       );
   }
 
-  getActiveCardLinkPrices(
+  getActiveProductPrices(
     activeProductId: string,
     recurring: 'month' | 'year'
   ) {

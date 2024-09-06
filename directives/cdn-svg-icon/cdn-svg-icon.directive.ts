@@ -10,7 +10,7 @@ import { firstValueFrom, lastValueFrom } from 'rxjs';
 export class CdnSvgIconDirective implements OnInit {
   @Input('cdnSvgIcon') iconConfig: string[];
 
-  private readonly baseUrl = 'https://cdn.cardlink.ai/production/assets/icons';
+  private readonly baseUrl = '';
   domSanitizer = inject(DomSanitizer);
   matIconRegistry = inject(MatIconRegistry);
 

@@ -1,81 +1,78 @@
 <ion-list class="select-none" [id]="menuId" mode="ios">
-  @for (menu of menuItems; track menu.id) { @switch (menu.type) { 
-    @case ('group'){
-      <ion-list-header class="fs-14">{{ menu.title }}</ion-list-header>
-      
-      @if(menu?.children?.length > 0){ @for (child of menu?.children; track child.id) {
+  @for (menu of menuItems; track menu.id) { @switch (menu.type) {
+  @case ('group'){
+  <ion-list-header class="fs-14">{{ menu.title }}</ion-list-header>
 
-        <ion-menu-toggle autoHide="false" class="cursor-pointer" mode="ios">
-          <!-- detailIcon="caret-forward-outline" -->
-          <ion-item
-            routerDirection="root"
-            [routerLink]="[child?.route?.path]"
-            [routerLinkActiveOptions]="{ exact: child?.route?.exact }"
-            [queryParams]="child?.route?.queryParams"
-            [disabled]="child.disabled"
-            (click)="menuItemClick()"
-            lines="none"
-            detail="false"
-            class="fw-400"
-            routerLinkActive="selected"
-          >
-          <!--  -->
-            @switch(child?.icon?.type){ @case ('url'){
+  @if(menu?.children?.length > 0){ @for (child of menu?.children; track
+  child.id) {
 
-              @if(child.disabled){
-                <ion-img class="mx-2 fpx-20" src="https://cdn.cardlink.ai/production/assets/icons/flat/lock.svg"></ion-img>
-              } @else {
-                <ion-img class="mx-2 fpx-20" [src]="child?.icon?.url"></ion-img>
-              }
-            <!-- <ion-icon aria-hidden="true" slot="start" [src]="child?.icon?.url"></ion-icon> -->
-            } @case ('named'){
-            <ion-icon
-              aria-hidden="true"
-              slot="start"
-              [color]="child?.icon?.color"
-              [name]="child?.icon?.name"
-            ></ion-icon>
-            } }
+  <ion-menu-toggle autoHide="false" class="cursor-pointer" mode="ios">
+    <!-- detailIcon="caret-forward-outline" -->
+    <ion-item
+      routerDirection="root"
+      [routerLink]="[child?.route?.path]"
+      [routerLinkActiveOptions]="{ exact: child?.route?.exact }"
+      [queryParams]="child?.route?.queryParams"
+      [disabled]="child.disabled"
+      (click)="menuItemClick()"
+      lines="none"
+      detail="false"
+      class="fw-400"
+      routerLinkActive="selected">
+      <!--  -->
+      @switch(child?.icon?.type){ @case ('url'){
 
-            <ion-label class="ion-no-margin">{{
-              child?.title
-            }}</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-   } } }
-   
-   @case('link') {
-    <ion-menu-toggle autoHide="false" class="cursor-pointer" mode="ios">
-      <ion-item
-        routerDirection="root"
-        [disabled]="menu.disabled"
-        [routerLink]="[menu?.route?.path]"
-        [routerLinkActiveOptions]="{ exact: menu?.route?.exact }"
-        [queryParams]="menu?.route?.queryParams"
-        lines="none"
-        (click)="menuItemClick()"
-        detail="false"
-        routerLinkActive="selected"
-        class="fw-400"
-      >
-        @switch(menu?.icon?.type){ @case ('url'){
-        <ion-img class="mx-2 fpx-20" [src]="menu?.icon?.url"></ion-img>
-        <!-- <ion-icon aria-hidden="true" slot="start" [src]="child?.icon?.url"></ion-icon> -->
-        } @case ('named'){
-        <ion-icon
-          aria-hidden="true"
-          slot="start"
-          [color]="menu?.icon?.color"
-          [name]="menu?.icon?.name"
-        ></ion-icon>
-        } }
+      @if(child.disabled){
+      <ion-img class="mx-2 fpx-20" [src]="child?.icon?.url"></ion-img>
+      } @else {
+      <ion-img class="mx-2 fpx-20" [src]="child?.icon?.url"></ion-img>
+      }
+      <!-- <ion-icon aria-hidden="true" slot="start" [src]="child?.icon?.url"></ion-icon> -->
+      } @case ('named'){
+      <ion-icon
+        aria-hidden="true"
+        slot="start"
+        [color]="child?.icon?.color"
+        [name]="child?.icon?.name"></ion-icon>
+      } }
 
-        <ion-label class="ion-no-margin">{{
-          menu?.title
+      <ion-label class="ion-no-margin">{{
+        child?.title
         }}</ion-label>
-      </ion-item>
-    </ion-menu-toggle>
+    </ion-item>
+  </ion-menu-toggle>
+  } } }
 
-   }
-} }
+  @case('link') {
+  <ion-menu-toggle autoHide="false" class="cursor-pointer" mode="ios">
+    <ion-item
+      routerDirection="root"
+      [disabled]="menu.disabled"
+      [routerLink]="[menu?.route?.path]"
+      [routerLinkActiveOptions]="{ exact: menu?.route?.exact }"
+      [queryParams]="menu?.route?.queryParams"
+      lines="none"
+      (click)="menuItemClick()"
+      detail="false"
+      routerLinkActive="selected"
+      class="fw-400">
+      @switch(menu?.icon?.type){ @case ('url'){
+      <ion-img class="mx-2 fpx-20" [src]="menu?.icon?.url"></ion-img>
+      <!-- <ion-icon aria-hidden="true" slot="start" [src]="child?.icon?.url"></ion-icon> -->
+      } @case ('named'){
+      <ion-icon
+        aria-hidden="true"
+        slot="start"
+        [color]="menu?.icon?.color"
+        [name]="menu?.icon?.name"></ion-icon>
+      } }
+
+      <ion-label class="ion-no-margin">{{
+        menu?.title
+        }}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+
+  }
+  } }
 </ion-list>
