@@ -1,24 +1,25 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { AgGridAngular, AgGridModule } from '@gmtre-datagrid/angular';
-import { ClientSideRowModelModule } from '@gmtre-datagrid/client-side-row-model';
-import { ClipboardModule } from '@gmtre-datagrid/clipboard';
-import { ColumnsToolPanelModule } from '@gmtre-datagrid/column-tool-panel';
-import { ColDef, GridApi, GridOptions } from '@gmtre-datagrid/core';
-import { CsvExportModule } from '@gmtre-datagrid/csv-export';
-import { ExcelExportModule } from '@gmtre-datagrid/excel-export';
-import { FiltersToolPanelModule } from '@gmtre-datagrid/filter-tool-panel';
-import { InfiniteRowModelModule } from '@gmtre-datagrid/infinite-row-model';
-import { MasterDetailModule } from '@gmtre-datagrid/master-detail';
-import { MenuModule } from '@gmtre-datagrid/menu';
-import { MultiFilterModule } from '@gmtre-datagrid/multi-filter';
-import { RichSelectModule } from '@gmtre-datagrid/rich-select';
-import { RowGroupingModule } from '@gmtre-datagrid/row-grouping';
-import { ServerSideRowModelModule } from '@gmtre-datagrid/server-side-row-model';
-import { SideBarModule } from '@gmtre-datagrid/side-bar';
-import { StatusBarModule } from '@gmtre-datagrid/status-bar';
-import { ViewportRowModelModule } from '@gmtre-datagrid/viewport-row-model';
+import { AgGridAngular, AgGridModule } from '../../datagrid/angular';
+import { ClientSideRowModelModule } from '../../datagrid/client-side-row-model';
+import { ClipboardModule } from '../../datagrid/clipboard';
+import { ColumnsToolPanelModule } from '../../datagrid/column-tool-panel';
+import { ColDef, GridApi, GridOptions } from '../../datagrid/core';
+import { CsvExportModule } from '../../datagrid/csv-export';
+import { ExcelExportModule } from '../../datagrid/excel-export';
+import { FiltersToolPanelModule } from '../../datagrid/filter-tool-panel';
+import { InfiniteRowModelModule } from '../../datagrid/infinite-row-model';
+import { MasterDetailModule } from '../../datagrid/master-detail';
+import { MenuModule } from '../../datagrid/menu';
+import { MultiFilterModule } from '../../datagrid/multi-filter';
+import { RichSelectModule } from '../../datagrid/rich-select';
+import { RowGroupingModule } from '../../datagrid/row-grouping';
+import { ServerSideRowModelModule } from '../../datagrid/server-side-row-model';
+import { SideBarModule } from '../../datagrid/side-bar';
+import { StatusBarModule } from '../../datagrid/status-bar';
+import { ViewportRowModelModule } from '../../datagrid/viewport-row-model';
 import { BehaviorSubject } from 'rxjs';
+import { DEFAULTGRIDOPTIONS } from './default-col-defs';
 
 @Component({
   selector: 'gmtre-grid',
