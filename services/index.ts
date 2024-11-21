@@ -1,7 +1,5 @@
 export * from './config';
 export * from './confirmation';
-// export * from './database';
-// export * from './indexeddb';
 export * from './loading';
 export * from './media-watcher';
 export * from './notifications';
