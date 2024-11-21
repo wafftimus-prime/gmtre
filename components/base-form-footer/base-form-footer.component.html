@@ -1,0 +1,63 @@
+@if(!hide_toolbar){
+<!-- Buttons Bar -->
+<div class="flex w-full justify-between mt-2">
+  <div class="flex space-x-3">
+    <!-- RESET -->
+    @if(!disable_reset){
+    @if(form?.pristine){
+    <ng-container [ngTemplateOutlet]="PristineForm"></ng-container>
+    }
+    @else{
+    <ng-container [ngTemplateOutlet]="DirtyForm"></ng-container>
+    } }
+  </div>
+
+  <div class="flex space-x-3">
+    <!-- BACK -->
+    @if((step !== 1)){
+    <button mat-icon-button (click)="goBack.emit()">
+      <mat-icon svgIcon="heroicons_solid:arrow-left"></mat-icon>
+    </button>
+    }
+
+    <!-- CONTINUE -->
+    @if(step !== steps){
+    <button mat-icon-button [disabled]="continue_disabled"
+      (click)="continue.emit()">
+      <mat-icon svgIcon="heroicons_solid:arrow-right"></mat-icon>
+    </button>
+    }
+
+    <!-- SUBMIT -->
+    @if(edit_mode ? true : (force_steps ? step === steps: true)){
+    @if(form_ready){
+    <ng-container [ngTemplateOutlet]="ValidForm"></ng-container>
+    }
+    @else{
+    <ng-container [ngTemplateOutlet]="InvalidForm"></ng-container>
+    } }
+  </div>
+</div>
+}
+<ng-template #ValidForm>
+  <button mat-flat-button color="primary" (click)="submitForm.emit()">
+    {{submit_text}}
+  </button>
+</ng-template>
+<ng-template #InvalidForm>
+  <button mat-stroked-button color="primary" [disabled]="true">
+    {{submit_text}}
+  </button>
+</ng-template>
+
+<!-- Reset Buttons -->
+<ng-template #DirtyForm>
+  <button mat-flat-button color="warn" (click)="resetForm.emit()">
+    Reset
+  </button>
+</ng-template>
+<ng-template #PristineForm>
+  <button mat-stroked-button color="warn" [disabled]="true">
+    Reset
+  </button>
+</ng-template>

@@ -1,0 +1,17 @@
+<div class="flex justify-between items-start space-x-8">
+  <div class="flex flex-col">
+    <span class="text-xl font-semibold">{{ title }}</span>
+    <span class="text-sm text-secondary">{{subtitle}}</span>
+    <span class="text-sm" *ngIf="steps > 1">
+      Step {{ step }} of {{ steps }}
+    </span>
+  </div>
+  <div class="flex space-x-2">
+    <button
+      mat-icon-button
+      type="button"
+      (click)="closeForm.emit()">
+      <mat-icon svgIcon="flat:cancel"></mat-icon>
+    </button>
+  </div>
+</div>

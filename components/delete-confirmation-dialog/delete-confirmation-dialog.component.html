@@ -1,0 +1,31 @@
+<div class="w-full">
+  <!-- Form -->
+  <form [formGroup]="base_form">
+    <!-- Section -->
+    <div class="w-full">
+      <div class="text-xl">Delete Confirmation</div>
+      <div class="text-secondary">
+        To delete this item please enter your name as it is saved in our system
+      </div>
+    </div>
+
+    <mat-form-field class="quix-mat-dense w-full mt-4">
+      <mat-label>Your Name</mat-label>
+      <input matInput [formControl]="base_form.get('name')" />
+      @if (base_form.get('name').errors) {
+      <mat-error> {{ errorMessage(base_form, 'name') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+      <button mat-stroked-button mat-dialog-close type="button">Cancel</button>
+      <button class="ml-4"
+        [mat-dialog-close]="true"
+        [disabled]="base_form?.invalid" mat-flat-button type="button"
+        [color]="'primary'">
+        Delete Item
+      </button>
+    </div>
+  </form>
+</div>

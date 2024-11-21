@@ -1,0 +1,106 @@
+<div class="flex flex-col">
+  <shared-breadcrumbs [breadcrumbs]="options.breadcrumbs"></shared-breadcrumbs>
+  <!-- Header -->
+  <div
+    class="flex py-3"
+    [ngClass]="{
+      'flex-row justify-between items-start': !is_small,
+      'flex-col ': is_small
+    }">
+    <!-- Title -->
+    <div
+      class="flex"
+      [ngClass]="{
+        'flex-start': !is_small,
+        'flex-row items-center justify-between mb-4': [
+          'xsmall',
+          'small'
+        ].includes(screenSize)
+      }">
+      <div class="flex flex-col">
+        <div
+          class="font-extrabold tracking-tight leading-none"
+          [ngClass]="{
+            'text-4xl': !is_small,
+            'text-xl ': is_small
+          }">
+          {{ options.title }}
+        </div>
+        <ng-content select="[subtitle]"></ng-content>
+      </div>
+
+      <ng-content select="[someContent]"></ng-content>
+    </div>
+
+    <!-- Main actions -->
+    <div class="flex items-start">
+      <!-- Desktop Actions -->
+      @if(options.stats.rawCount > 0){
+      @if(options.searchable){
+      @for (action of options?.actionButtons; track action.actionType) {
+      <div class="flex items-center mx-3">
+        <button
+          class="quix-mat-button-rounded bg-accent-700"
+          mat-flat-button
+          [color]="'accent'"
+          (click)="OnAction.emit(action.actionType)">
+          @if(action?.icon){
+          <mat-icon class="icon-size-5"
+            svgIcon="{{ action.icon }}"></mat-icon>
+          }
+          <span class="ml-2">{{ action?.label }}</span>
+        </button>
+      </div>
+      } } }
+
+      <!-- Search -->
+      @if(options.stats.rawCount > 0){
+      @if(options.searchable){
+      <div class="flex-auto">
+        <mat-form-field
+        subscriptSizing="dynamic"
+          class="quix-mat-dense quix-mat-no-subscript quix-mat-rounded w-full min-w-50">
+          <mat-icon
+            class="icon-size-5"
+            matPrefix
+            [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
+          <input
+            matInput
+            (ngModelChange)="OnSearch.emit($event)"
+            [formControl]="searchInputControl"
+            [autocomplete]="'off'"
+            [placeholder]="'Search...'" />
+        </mat-form-field>
+      </div>
+      } }
+
+      <!-- Mobile Actions -->
+      @if ( options.stats.rawCount > 0 && options?.actionButtons?.length &&
+      is_small) {
+      <button
+        mat-icon-button
+        matTooltip="Actions"
+        [matMenuTriggerFor]="actions">
+        <mat-icon class="icon-size-5"
+          svgIcon="heroicons_solid:dots-vertical"></mat-icon>
+      </button>
+      }
+      <mat-menu class="rounded-xl px-2 bg-card border-2 shadow"
+        #actions="matMenu">
+        @for ( action of options?.actionButtons; track action.actionType) {
+        <button mat-menu-item
+          (click)="OnAction.emit(action.actionType)">
+          <span class="flex items-center rounded-xl">
+            @if(action?.icon){
+            <mat-icon class="icon-size-5"
+              svgIcon="{{ action.icon }}"></mat-icon>
+            }
+            <span class="ml-2">{{ action?.label }}</span>
+          </span>
+        </button>
+        }
+      </mat-menu>
+
+    </div>
+  </div>
+</div>

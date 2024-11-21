@@ -1,0 +1,26 @@
+<div class="flex flex-wrap items-center font-medium">
+  @for ( item of breadcrumbs; track item.id; let sIx = $index) {
+  @if($first){
+  <a [routerLink]="item.path" class="whitespace-nowrap text-primary-500">{{
+    item.label }}</a>
+  }
+
+  @if(!$first && !$last){
+  <div class="flex items-center ml-1 whitespace-nowrap">
+    <mat-icon
+      class="icon-size-5 text-secondary"
+      [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+    <a [routerLink]="item.path" class="ml-1 text-primary-500">{{ item.label
+      }}</a>
+  </div>
+  }
+
+  @if($last){
+  <div class="flex items-center ml-1 whitespace-nowrap">
+    <mat-icon
+      class="icon-size-5 text-secondary"
+      [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+    <span class="ml-1 text-secondary">{{ item.label }}</span>
+  </div>
+  } }
+</div>

@@ -1,0 +1,7 @@
+<ag-grid-angular
+  #AgGrid
+  class="ag-theme-material {{ class }}"
+  (gridReady)="onGridReady($event)"
+  [gridOptions]="gridOptions"
+  [rowData]="rowData$ | async"
+  [modules]="modules"></ag-grid-angular>
